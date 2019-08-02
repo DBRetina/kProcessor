@@ -7,3 +7,6 @@
 [submodule "ThirdParty/cereal"]
 	path = ThirdParty/cereal
 	url = https://github.com/USCiLab/cereal.git
+[submodule "ThirdParty/genericDecoder"]
+	path = ThirdParty/genericDecoder
+	url = https://github.com/negm98/genericDecoder
