@@ -339,6 +339,23 @@ bool kDataFrameMQF::setCount(string kmer, uint64_t count) {
     return true;
 }
 
+bool kDataFrameMQF::setCount(uint64_t hash, uint64_t count) {
+    hash = hash % mqf->metadata->range;
+    uint64_t currentCount = qf_count_key(mqf, hash);
+    if (currentCount > count) {
+        qf_remove(mqf, hash, currentCount - count, false, false);
+    } else {
+        try {
+            qf_insert(mqf, hash, count - currentCount, false, false);
+        }
+        catch (overflow_error &e) {
+            reserve(mqf->metadata->nslots);
+            return setCount(hash, count);
+        }
+    }
+    return true;
+}
+
 bool kDataFrameMQF::insert(string kmer, uint64_t count) {
     uint64_t hash = hasher->hash(kmer) % mqf->metadata->range;
     try {
@@ -379,6 +396,11 @@ bool kDataFrameMQF::insert(uint64_t hash){
     return insert(hash);
   }
   return true;
+}
+
+uint64_t kDataFrameMQF::count(uint64_t hash) {
+    hash = hash % mqf->metadata->range;
+    return qf_count_key(mqf, hash);
 }
 
 uint64_t kDataFrameMQF::count(string kmer) {

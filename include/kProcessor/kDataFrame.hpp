@@ -252,8 +252,14 @@ public:
 /*! Returns bool value indicating whether the kmer is inserted or not.
 The difference between setCount and insert is that setCount set the count to N no matter the previous kmer count was*/
   virtual bool setCount(string kmer,uint64_t N)=0;
+/// set the kmer's count to N time in the kDataFrame
+/*! Returns bool value indicating whether the kmer is inserted or not.
+The difference between setCount and insert is that setCount set the count to N no matter the previous kmer count was*/
+  virtual bool setCount(uint64_t hash,uint64_t N)=0;
 /// returns the count of the kmer in the kDataFrame, i.e. the number of times the kmer is inserted in the kdataFrame.
   virtual uint64_t count(string kmer)=0;
+/// returns the count of one hash value in the kDataFrame, i.e. the number of times the hash is inserted in the kdataFrame.
+  virtual uint64_t count(uint64_t hash)=0;
 // Removes  a kmer from the kDataFrame
 /*! Returns bool value indicating whether the kmer is erased or not*/
   virtual bool erase(string kmer)=0;
@@ -333,10 +339,12 @@ public:
 
 
   bool setCount(string kmer,uint64_t count);
+  bool setCount(uint64_t hash,uint64_t count);
   bool insert(string kmer,uint64_t count);
   bool insert(string kmer);
   bool insert(uint64_t hash);
   uint64_t count(string kmer);
+  uint64_t count(uint64_t hash);
 
 
   bool erase(string kmer);
@@ -397,10 +405,12 @@ public:
   inline bool kmerExist(string kmer);
 
   bool setCount(string kmer, uint64_t count);
+  bool setCount(uint64_t hash, uint64_t count);
   bool insert(string kmer);
   bool insert(string kmer, uint64_t count);
   bool insert(uint64_t hash);
   uint64_t count(string kmer);
+  uint64_t count(uint64_t hash);
   bool erase(string kmer);
 
   uint64_t size();
@@ -471,6 +481,8 @@ public:
 
     bool setCount(string kmer, uint64_t count);
 
+    bool setCount(uint64_t hash, uint64_t count);
+
     bool insert(string kmer);
 
     bool insert(string kmer, uint64_t count);
@@ -478,6 +490,8 @@ public:
     bool insert(uint64_t hash);
 
     uint64_t count(string kmer);
+
+    uint64_t count(uint64_t hash);
 
     bool erase(string kmer);
 
