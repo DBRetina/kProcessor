@@ -103,6 +103,10 @@ bool kDataFrameMAP::insert(string kmerS) {
     return true;
 }
 
+bool kDataFrameMAP::insert(uint64_t hash) {
+    this->MAP[hash]++;
+    return true;
+}
 
 bool kDataFrameMAP::setCount(string kmerS, uint64_t tag) {
     this->MAP[kmer::str_to_canonical_int(kmerS)] = tag;

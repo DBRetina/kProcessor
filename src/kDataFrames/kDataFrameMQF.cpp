@@ -366,6 +366,21 @@ bool kDataFrameMQF::insert(string kmer) {
     return true;
 }
 
+bool kDataFrameMQF::insert(uint64_t hash){
+  if(load_factor()>0.9)
+    reserve(mqf->metadata->nslots);
+  hash=hash% mqf->metadata->range;
+  try{
+    qf_insert(mqf,hash,1,false,false);
+  }
+  catch(overflow_error & e)
+  {
+    reserve(mqf->metadata->nslots);
+    return insert(hash);
+  }
+  return true;
+}
+
 uint64_t kDataFrameMQF::count(string kmer) {
     uint64_t hash = hasher->hash(kmer) % mqf->metadata->range;
     return qf_count_key(mqf, hash);

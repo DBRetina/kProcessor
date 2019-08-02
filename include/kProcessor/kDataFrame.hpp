@@ -245,6 +245,9 @@ public:
   /// insert the kmer in the kmer row time in the kDataFrame, or increment the kmer count with the count in the row if it is already exists.
   /*! Returns bool value indicating whether the kmer is inserted or not*/
   bool insert(kmerRow k);
+/// insert the a hashed-key one time in the kDataFrame, or increment the index count if it is already exists.
+/*! Returns bool value indicating whether the key is inserted or not*/
+  virtual bool insert(uint64_t hash)=0;
 /// set the kmer's count to N time in the kDataFrame
 /*! Returns bool value indicating whether the kmer is inserted or not.
 The difference between setCount and insert is that setCount set the count to N no matter the previous kmer count was*/
@@ -332,6 +335,7 @@ public:
   bool setCount(string kmer,uint64_t count);
   bool insert(string kmer,uint64_t count);
   bool insert(string kmer);
+  bool insert(uint64_t hash);
   uint64_t count(string kmer);
 
 
@@ -395,6 +399,7 @@ public:
   bool setCount(string kmer, uint64_t count);
   bool insert(string kmer);
   bool insert(string kmer, uint64_t count);
+  bool insert(uint64_t hash);
   uint64_t count(string kmer);
   bool erase(string kmer);
 
@@ -469,6 +474,8 @@ public:
     bool insert(string kmer);
 
     bool insert(string kmer, uint64_t count);
+
+    bool insert(uint64_t hash);
 
     uint64_t count(string kmer);
 
