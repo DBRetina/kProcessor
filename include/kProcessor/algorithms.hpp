@@ -82,5 +82,7 @@ kmerDecoder* initialize_kmerDecoder(std::string mode, std::map<std::string, int>
 /// Perform indexing to a sequences file with predefined kmers decoding mode, returns a colored kDataframe.
 colored_kDataFrame *index(kmerDecoder *KD, string names_fileName, kDataFrame *frame);
 
+/// Perform indexing to a generic file with list of lists, returns a colored kDataframe.
+colored_kDataFrame *index(GenericDecoder *GD, string names_fileName, kDataFrame *frame);
 }
 #endif
