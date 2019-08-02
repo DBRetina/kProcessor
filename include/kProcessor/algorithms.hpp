@@ -17,6 +17,7 @@
 #include "colored_kDataFrame.hpp"
 #include <map>
 #include "kmerDecoder.hpp"
+#include "GenericDecoder.hpp"
 
 
 namespace kProcessor{
@@ -45,6 +46,9 @@ void parseSequences(string seqFileName,int nThreads,kDataFrame* output);
 
 /// Load the kmers in the input file into the output kDataframe. Input File can be of formats: fastq,fasta.
 void parseSequences(kmerDecoder * KD, kDataFrame* output);
+
+/// Load items from input into the output kDataframe.
+void parseSequences(GenericDecoder * GD, kDataFrame* output);
 
 /// Load the kmers in the input string into the output kDataframe.
 void parseSequencesFromString(kmerDecoder *KD, string sequence,kDataFrame* output);

@@ -308,6 +308,20 @@ namespace kProcessor {
         }
     }
 
+  void parseSequences(GenericDecoder * GD, kDataFrame* output){
+
+    flat_hash_map<std::string, std::vector<uint64_t> >::iterator it;
+
+    for ( it = GD->hashedAList->begin(); it != GD->hashedAList->end(); it++ )
+    {
+      for(size_t i=0; i<it->second.size(); ++i)
+      {
+        output->insert(it->second[i]);
+      }
+    }
+
+  }
+
     void parseSequences(string seqFileName, int nThreads, kDataFrame *output) {
 //  if(dynamic_cast<kDataFrameMQF*>(output))
 //  {
