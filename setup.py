@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
 KPROCESSOR = r"""
-  _    _____                                        
- | |  |  __ \                                       
- | | _| |__) | __ ___   ___ ___  ___ ___  ___  _ __ 
+  _    _____
+ | |  |  __ \
+ | | _| |__) | __ ___   ___ ___  ___ ___  ___  _ __
  | |/ /  ___/ '__/ _ \ / __/ _ \/ __/ __|/ _ \| '__|
- |   <| |   | | | (_) | (_|  __/\__ \__ \ (_) | |   
- |_|\_\_|   |_|  \___/ \___\___||___/___/\___/|_|                                                                                                        
+ |   <| |   | | | (_) | (_|  __/\__ \__ \ (_) | |
+ |_|\_\_|   |_|  \___/ \___\___||___/___/\___/|_|
 """
 
 from distutils.command.build import build
@@ -23,7 +23,7 @@ if os.path.exists('MANIFEST'):
 try:
     from setuptools import setup, Extension
 except ImportError:
-    from distutils.core import setup, Extension    
+    from distutils.core import setup, Extension
 
 try:
     with open('README.md') as f:
@@ -44,7 +44,11 @@ INCLUDES = [
     'ThirdParty/sdsl-lite/include',
     'ThirdParty/kmerDecoder/include',
     'ThirdParty/kmerDecoder/lib/seqan/include',
-    'ThirdParty/kmerDecoder/lib/parallel-hashmap'
+    'ThirdParty/kmerDecoder/lib/parallel-hashmap',
+    'ThirdParty/genericDecoder/include',
+    'ThirdParty/genericDecoder/lib/jsoncons/include',
+    'ThirdParty/genericDecoder/lib/cereal/include',
+    'ThirdParty/genericDecoder/lib/parallel-hashmap'
 ]
 
 LINK_ARGS = [
@@ -58,14 +62,16 @@ LIBRARIES_DIRS = [
     "build",
     "build/ThirdParty/MQF",
     "build/ThirdParty/sdsl-lite/lib",
-    "build/ThirdParty/kmerDecoder"
+    "build/ThirdParty/kmerDecoder",
+    "build/ThirdParty/genericDecoder"
 ]
 
 LIBRARIES = [
     'kProcessor',
     'sdsl',
     'lMQF',
-    'kmerDecoder'
+    'kmerDecoder',
+    'genericDecoder'
 ]
 
 SWIG_OPTS = [
