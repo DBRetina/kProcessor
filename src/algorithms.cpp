@@ -567,6 +567,21 @@ namespace kProcessor {
         }
     }
 
+    GenericDecoder* initialize_genericDecoder(std::string filename, std::string source){
+
+        std::string func_name = "wrong parameters in initialize_genericDecoder() : \n";
+
+        // for avoiding case sensitivity issues.
+        transform(source.begin(), source.end(), source.begin(), ::tolower);
+
+        if (source == "disgenet") {
+            return new DisGeDecoder(filename);
+        }
+        else{
+            std::cerr << func_name << "supported genericDecoder sources: {DisGeNET}" << std::endl;
+            exit(1);
+        }
+    }
 
     colored_kDataFrame *index(kmerDecoder *KD, string names_fileName, kDataFrame *frame) {
 

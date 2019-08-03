@@ -79,6 +79,9 @@ kmerDecoder* initialize_kmerDecoder(std::string filename, int chunkSize, std::st
 /// Initialize kmerDecoder to decode kmers from a sequence string with predefined mode.
 kmerDecoder* initialize_kmerDecoder(std::string mode, std::map<std::string, int> params);
 
+/// Initialize GenericDecoder to decode list of lists from source file.
+GenericDecoder* initialize_genericDecoder(std::string filename, std::string source);
+
 /// Perform indexing to a sequences file with predefined kmers decoding mode, returns a colored kDataframe.
 colored_kDataFrame *index(kmerDecoder *KD, string names_fileName, kDataFrame *frame);
 
