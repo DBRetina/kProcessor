@@ -49,6 +49,7 @@ python3 setup.py bdist_wheel
 - [colored_kDataFrame](./coloredKDataFrame.markdown)
 - [kDataFrame Iterator](./kDataFrameIterator.markdown)
 - [kmerDecoder](./kmerDecoder.markdown)
+- [genericDecoder](./genericDecoder.markdown)
 - [kmer counting](./kmerCounting.markdown)
 - [Indexing](./indexing.markdown)
 - [set functions](./setFunctions.markdown)
