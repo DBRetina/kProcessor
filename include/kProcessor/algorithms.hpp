@@ -80,7 +80,10 @@ kmerDecoder* initialize_kmerDecoder(std::string filename, int chunkSize, std::st
 kmerDecoder* initialize_kmerDecoder(std::string mode, std::map<std::string, int> params);
 
 /// Initialize GenericDecoder to decode list of lists from source file.
-GenericDecoder* initialize_genericDecoder(std::string filename, std::string source);
+GenericDecoder* initialize_genericDecoder(std::string filename, std::string source, MAPhasher* hashMethod= new MAPhasher);
+
+/// Initialize GenericDecoder, with filter, to decode list of lists from source file.
+GenericDecoder* initialize_genericDecoder(std::string filename, std::string filtername, std::string source, MAPhasher* hashMethod= new MAPhasher);
 
 /// Perform indexing to a sequences file with predefined kmers decoding mode, returns a colored kDataframe.
 colored_kDataFrame *index(kmerDecoder *KD, string names_fileName, kDataFrame *frame);

@@ -567,7 +567,7 @@ namespace kProcessor {
         }
     }
 
-    GenericDecoder* initialize_genericDecoder(std::string filename, std::string source){
+    GenericDecoder* initialize_genericDecoder(std::string filename, std::string source, MAPhasher* hashMethod){
 
         std::string func_name = "wrong parameters in initialize_genericDecoder() : \n";
 
@@ -575,10 +575,32 @@ namespace kProcessor {
         transform(source.begin(), source.end(), source.begin(), ::tolower);
 
         if (source == "disgenet") {
-            return new DisGeDecoder(filename);
+            return new DisGeDecoder(filename, hashMethod);
+        }
+        else if(source == "consensuspathdb"){
+          return new ConsPathDecoder(filename, hashMethod);
         }
         else{
-            std::cerr << func_name << "supported genericDecoder sources: {DisGeNET}" << std::endl;
+            std::cerr << func_name << "supported genericDecoder sources: {DisGeNET, consensuspathdb}" << std::endl;
+            exit(1);
+        }
+    }
+
+    GenericDecoder* initialize_genericDecoder(std::string filename, std::string filtername, std::string source, MAPhasher* hashMethod){
+
+        std::string func_name = "wrong parameters in initialize_genericDecoder() : \n";
+
+        // for avoiding case sensitivity issues.
+        transform(source.begin(), source.end(), source.begin(), ::tolower);
+
+        if (source == "disgenet") {
+            return new DisGeDecoder(filename, filtername, hashMethod);
+        }
+        else if(source == "consensuspathdb"){
+          return new ConsPathDecoder(filename, filtername, hashMethod);
+        }
+        else{
+            std::cerr << func_name << "supported genericDecoder sources: {DisGeNET, consensuspathdb}" << std::endl;
             exit(1);
         }
     }
@@ -746,7 +768,7 @@ namespace kProcessor {
         }
         return res;
     }
-    
+
   colored_kDataFrame *index(GenericDecoder *GD, string names_fileName, kDataFrame *frame) {
 
       flat_hash_map<string, string> namesMap;
