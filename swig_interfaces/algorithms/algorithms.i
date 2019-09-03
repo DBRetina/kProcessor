@@ -9,6 +9,8 @@ kmerDecoder* initialize_kmerDecoder(std::string filename, int chunkSize, std::st
 kmerDecoder* initialize_kmerDecoder(std::string mode, std::map<std::string, int> params);
 GenericDecoder* initialize_genericDecoder(std::string filename, std::string source, MAPhasher* hashMethod);
 GenericDecoder* initialize_genericDecoder(std::string filename, std::string filtername, std::string source, MAPhasher* hashMethod);
+MAPhasher* initialize_MAPhasher(std::string filename);
+void save_MAPhasher(MAPhasher* hashMethod, std::string filename);
 colored_kDataFrame *index(kmerDecoder *KD, string names_fileName, kDataFrame *frame);
 colored_kDataFrame *index(GenericDecoder *GD, string names_fileName, kDataFrame *frame);
 }

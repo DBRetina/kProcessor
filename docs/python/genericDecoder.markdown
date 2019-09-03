@@ -19,11 +19,21 @@ genericDecoder is an external library that enables kProcessor to parse other fil
 
 ## Initialization
 
+### Initialize MAPhasher to load hashed values and save it
+
+```python
+
+hashMethod = kp.initialize_MAPhasher(filePath)
+
+kp.save_MAPhasher(hashMethod, filePath)
+
+```
+
 ### Initialize genericDecoder to parse a generic file
 
 ```python
 
-GD = kp.initialize_genericDecoder(filePath, filterPath, source)
+GD = kp.initialize_genericDecoder(filePath, filterPath, source, hashMethod)
 
 ```
 
@@ -31,9 +41,11 @@ GD = kp.initialize_genericDecoder(filePath, filterPath, source)
 
 ```python
 
-# Initialize genericDecoder object
+# Initialize MAPhasher from old saved data
+hashMethod = kp.initialize_MAPhasher(filePath)
 
-GD = kp.initialize_genericDecoder(filePath, source)
+# Initialize genericDecoder object
+GD = kp.initialize_genericDecoder(filePath, source,hashMethod)
 
 # Initialize kDataFrame object
 KF = kp.kDataFrameMQF(21)
@@ -41,6 +53,10 @@ KF = kp.kDataFrameMQF(21)
 # Perform indexing, store elements with their colors in the KF object and the colors information will be returned as a colored_kDataFrame (cfk)
 cfk = kp.index(GD, fileNames ,KF)
 
+# save indexed data
 cfk.save(filePath+"_indexed")
+
+# save map of hashed values
+kp.save_MAPhasher(hashMethod, filePath)
 
 ```
