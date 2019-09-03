@@ -586,6 +586,19 @@ namespace kProcessor {
         }
     }
 
+    MAPhasher* initialize_MAPhasher(std::string filename){
+        if (filename == "") {
+            return new MAPhasher();
+        }
+        else {
+          return new MAPhasher(filename);
+        }
+    }
+
+    void save_MAPhasher(MAPhasher* hashMethod, std::string filename){
+        hashMethod->save(filename);
+    }
+
     GenericDecoder* initialize_genericDecoder(std::string filename, std::string filtername, std::string source, MAPhasher* hashMethod){
 
         std::string func_name = "wrong parameters in initialize_genericDecoder() : \n";

@@ -85,6 +85,12 @@ GenericDecoder* initialize_genericDecoder(std::string filename, std::string sour
 /// Initialize GenericDecoder, with filter, to decode list of lists from source file.
 GenericDecoder* initialize_genericDecoder(std::string filename, std::string filtername, std::string source, MAPhasher* hashMethod= new MAPhasher);
 
+/// Initialize MAPhasher to store hashed values.
+MAPhasher* initialize_MAPhasher(std::string filename= "");
+
+/// save MAPhasher on disk.
+void save_MAPhasher(MAPhasher* hashMethod, std::string filename);
+
 /// Perform indexing to a sequences file with predefined kmers decoding mode, returns a colored kDataframe.
 colored_kDataFrame *index(kmerDecoder *KD, string names_fileName, kDataFrame *frame);
 
