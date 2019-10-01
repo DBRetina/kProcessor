@@ -11,6 +11,7 @@ GenericDecoder* initialize_genericDecoder(std::string _ofilePath, std::string so
 GenericDecoder* initialize_genericDecoder(std::string _ofilePath, std::string _ifilePath, std::string source, MAPhasher* _hashMethod, int _minList, std::string _filterPath, std::string _dictionaryPath);
 GenericDecoder* initialize_genericDecoder(GenericDecoder* GD, std::string _ofilePath, std::string source, int _minList, std::string _filterPath, std::string _dictionaryPath);
 GenericDecoder* initialize_genericDecoder(GenericDecoder* GD, std::string _ofilePath, std::string _ifilePath, std::string source, int _minList, std::string _filterPath, std::string _dictionaryPath);
+GenericDecoder* initialize_genericDecoder(std::string _ifilePath, MAPhasher* _hashMethod);
 GenericDecoder* set_hashMethod(GenericDecoder* GD, MAPhasher* _hashMethod);
 GenericDecoder* set_minList(GenericDecoder* GD, int _minList);
 GenericDecoder* set_filterPath(GenericDecoder* GD, std::string _filterPath);

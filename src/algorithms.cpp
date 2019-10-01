@@ -655,6 +655,11 @@ namespace kProcessor {
         }
     }
 
+    GenericDecoder* initialize_genericDecoder(std::string _ifilePath, MAPhasher* _hashMethod){
+      GenericDecoder* GD= new GenericDecoder(_ifilePath, _hashMethod);
+      return GD;
+    }
+
     GenericDecoder* set_hashMethod(GenericDecoder* GD, MAPhasher* _hashMethod){
       return &GD->hashMethod(_hashMethod);
     }
@@ -684,6 +689,10 @@ namespace kProcessor {
         decoder->merge(GD);
         decoder->decode();
         return decoder;
+      }
+      else{
+        GD->decode();
+        return GD;
       }
     }
 

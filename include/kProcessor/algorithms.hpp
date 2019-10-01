@@ -91,6 +91,9 @@ GenericDecoder* initialize_genericDecoder(GenericDecoder* GD, std::string _ofile
 /// Initialize GenericDecoder to decode list of lists from source file.
 GenericDecoder* initialize_genericDecoder(GenericDecoder* GD, std::string _ofilePath, std::string _ifilePath, std::string source, int _minList= 1, std::string _filterPath= "", std::string _dictionaryPath= "");
 
+/// Initialize GenericDecoder to decode asscotiation list.
+GenericDecoder* initialize_genericDecoder(std::string _ifilePath, MAPhasher* _hashMethod= new MAPhasher);
+
 /// Initialize GenericDecoder to decode list of lists from source file.
 GenericDecoder* set_hashMethod(GenericDecoder* GD, MAPhasher* _hashMethod);
 

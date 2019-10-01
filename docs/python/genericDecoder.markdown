@@ -40,6 +40,15 @@ GD = kp.decode(GD)
 
 ```
 
+### Initialize genericDecoder to store a json file of asscotiation list
+
+```python
+
+GD = kp.initialize_genericDecoder(aListFilePath)
+GD = kp.decode(GD)
+
+```
+
 ### Index a generic file
 
 ```python
