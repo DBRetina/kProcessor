@@ -79,37 +79,37 @@ kmerDecoder* initialize_kmerDecoder(std::string filename, int chunkSize, std::st
 /// Initialize kmerDecoder to decode kmers from a sequence string with predefined mode.
 kmerDecoder* initialize_kmerDecoder(std::string mode, std::map<std::string, int> params);
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Initialize GenericDecoder to download the last version of online database based on the source.
 GenericDecoder* initialize_genericDecoder(std::string _ofilePath, std::string source, MAPhasher* _hashMethod= new MAPhasher, int _minList= 1, std::string _filterPath= "", std::string _dictionaryPath= "");
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Initialize GenericDecoder to decode list of lists from offline source _ifilePath.
 GenericDecoder* initialize_genericDecoder(std::string _ofilePath, std::string _ifilePath, std::string source, MAPhasher* _hashMethod= new MAPhasher, int _minList= 1, std::string _filterPath= "", std::string _dictionaryPath= "");
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Initialize GenericDecoder to be appended to another GD and to download the last version of online database based on the source.
 GenericDecoder* initialize_genericDecoder(GenericDecoder* GD, std::string _ofilePath, std::string source, int _minList= 1, std::string _filterPath= "", std::string _dictionaryPath= "");
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Initialize GenericDecoder to be appended to another GD and to decode list of lists from offline source _ifilePath.
 GenericDecoder* initialize_genericDecoder(GenericDecoder* GD, std::string _ofilePath, std::string _ifilePath, std::string source, int _minList= 1, std::string _filterPath= "", std::string _dictionaryPath= "");
 
 /// Initialize GenericDecoder to decode asscotiation list.
 GenericDecoder* initialize_genericDecoder(std::string _ifilePath, MAPhasher* _hashMethod= new MAPhasher);
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Set GenericDecoder object to use MAPhasher with saved hashed values.
 GenericDecoder* set_hashMethod(GenericDecoder* GD, MAPhasher* _hashMethod);
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Set GenericDecoder object to use minimum length of association list.
 GenericDecoder* set_minList(GenericDecoder* GD, int _minList);
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Set GenericDecoder object to use a filter.
 GenericDecoder* set_filterPath(GenericDecoder* GD, std::string _filterPath);
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Set GenericDecoder object to use a tabular file with words and its meaning to translate childrens.
 GenericDecoder* set_dictionaryPath(GenericDecoder* GD, std::string _dictionaryPath);
 
-/// Initialize GenericDecoder to decode list of lists from source file.
+/// Decode GenericDecoder object.
 GenericDecoder* decode(GenericDecoder* GD);
 
-/// Initialize MAPhasher to store hashed values.
+/// Initialize MAPhasher to store hashed values, if filename is given it loads a saved MAPhasher.
 MAPhasher* initialize_MAPhasher(std::string filename= "");
 
 /// save MAPhasher on disk.
