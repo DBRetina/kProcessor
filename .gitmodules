@@ -7,3 +7,6 @@
 [submodule "ThirdParty/MQF"]
 	path = ThirdParty/MQF
 	url = https://github.com/dib-lab/MQF
+[submodule "ThirdParty/kmerDecoder"]
+	path = ThirdParty/kmerDecoder
+	url = https://github.com/DBRetina/listDecoder
